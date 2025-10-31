@@ -1,0 +1,30 @@
+
+# Kaggle-ready config for ASVspoof2019-LA (AASIST++ small)
+sample_rate: 16000
+n_mels: 80
+win_lengths: [400, 640, 800]
+hop_length: 160
+n_fft: 1024
+
+data:
+  # Gốc Kaggle Input (đặt dataset có cấu trúc .../LA/LA/...)
+  audio_root: "/kaggle/input/asvspoof-2019-dataset/LA/LA"
+  protocol_train: "/kaggle/input/asvspoof-2019-dataset/LA/LA/ASVspoof2019_LA_cm_protocols/ASVspoof2019.LA.cm.train.trn.txt"
+  protocol_dev: "/kaggle/input/asvspoof-2019-dataset/LA/LA/ASVspoof2019_LA_cm_protocols/ASVspoof2019.LA.cm.dev.trl.txt"
+  segment_sec: 4.0
+
+train:
+  batch_size: 16
+  epochs: 3        # để chạy nhanh; tăng lên nếu muốn
+  lr: 0.001
+  weight_decay: 0.0001
+  num_workers: 2
+
+model:
+  in_channels: 3
+  emb_dim: 256
+
+augment:
+  time_mask: 30
+  freq_mask: 8
+  p: 0.5
